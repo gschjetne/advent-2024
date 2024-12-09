@@ -33,6 +33,25 @@ bool in_order(int *update, int page_count) {
     return true;
 }
 
+int compare(const void *first, const void *second) {
+    order_spec *specs = order_specs.base;
+    size_t length = vector_length(&order_specs);
+    int f = *((int *)first);
+    int s = *((int *)second);
+
+    for (int i = 0; i < length; i++) {
+        order_spec spec = specs[i];
+
+        if (f == spec.first && s == spec.second) {
+            return -1;
+        } else if (f == spec.second && s == spec.first) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 int main(void) {
     int result = 0;
 
@@ -62,7 +81,8 @@ int main(void) {
             token = strtok(NULL, ",");
         }
 
-        if (in_order(update, page_count)) {
+        if (!in_order(update, page_count)) {
+            qsort(update, page_count, sizeof(int), compare);
             result += update[page_count / 2];
         }
     }
