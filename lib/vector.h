@@ -17,6 +17,7 @@ void vector_init(vector *vec, size_t size);
 void vector_destroy(vector *vec);
 void vector_push(vector *vec, const void *element);
 bool vector_pop(vector *vec, void *element);
+void vector_insert(vector *vec, size_t after_index, void *element);
 void vector_clear(vector *vec);
 void vector_sort(vector *vec, int (*compare)(const void *, const void *));
 void vector_delete(vector *vec, size_t index);

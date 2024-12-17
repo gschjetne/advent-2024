@@ -88,6 +88,25 @@ bool vector_pop(vector *vec, void *element) {
     return true;
 }
 
+void vector_insert(vector *vec, size_t after_index, void *element) {
+    assert(after_index < vector_length(vec));
+
+    if (vec->fill == vec->end) {
+        vector_grow(vec);
+    }
+
+    size_t size = vec->size;
+    void *insert_point = vec->base + size * (after_index + 1);
+
+    for (void *move_to = vec->fill; move_to >= insert_point; move_to -= size) {
+        memcpy(move_to, move_to - size, size);
+    }
+
+    vec->fill += size;
+
+    memcpy(insert_point, element, size);
+}
+
 void vector_clear(vector *vec) {
     vec->fill = vec->base;
 
