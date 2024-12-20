@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#define HASHMAP_BUCKET_COUNT 256
+#define HASHMAP_BUCKET_COUNT 4096
 
 typedef struct {
     size_t keysize;
