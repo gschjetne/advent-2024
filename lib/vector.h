@@ -1,5 +1,5 @@
-#ifndef UTIL_H_
-#define UTIL_H_
+#ifndef VECTOR_H_
+#define VECTOR_H_
 
 #include <stdbool.h>
 #include <stdlib.h>
