@@ -12,7 +12,7 @@ obj/%.o: lib/%.c lib/%.h
 
 bin/%: src/%.c $(LIB_OBJECTS)
 	@mkdir -p bin
-	$(CC) $(CFLAGS) -o $@ $< $(LIB_OBJECTS)
+	$(CC) $(CFLAGS) -o $@ $< $(LIB_OBJECTS) -lm
 
 all: $(SOLUTIONS)
 
